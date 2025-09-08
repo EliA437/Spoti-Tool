@@ -19,7 +19,7 @@ const TerminalBox: React.FC<TerminalBoxProps> = ({
         borderRadius: 2,
         border: "1px solid rgba(255,255,255,0.5)",
         boxShadow: "0 0 8px rgba(255,255,255,0.2)",
-        backdropFilter: "blur(20px)",
+        backdropFilter: "blur(70px)",
         WebkitBackdropFilter: "blur(20px)",
         p: 3,
         display: "flex",
