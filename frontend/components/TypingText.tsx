@@ -1,4 +1,4 @@
-import { Textfit } from "react-textfit";
+import { Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 
 interface TypingTextProps {
@@ -31,19 +31,29 @@ const TypingText: React.FC<TypingTextProps> = ({
   }, []);
 
   return (
-    <Textfit
-      mode="single"
-      max={50} // max font size
-      style={{
+    <Typography
+      sx={{
         color,
         fontFamily: "monospace",
+        fontWeight: 500,
+        whiteSpace: "pre-wrap", // allows wrapping
+        wordBreak: "break-word", // break long words if needed
+        fontSize: "1.5rem", // default
         width: "100%",
-        whiteSpace: "pre",
+        transition: "font-size 0.2s ease",
+        "@media (max-width:1200px)": {
+          fontSize: "1.25rem",
+        },
+        "@media (max-width:600px)": {
+          fontSize: "0.75rem",
+        },
       }}
     >
       {text.substring(0, index)}
-      {showCursor && "|"}
-    </Textfit>
+      <span style={{ display: "inline-block", width: "0.6ch" }}>
+        {showCursor ? "|" : " "}
+      </span>
+    </Typography>
   );
 };
 

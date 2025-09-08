@@ -7,7 +7,7 @@ function App() {
     <Box
       sx={{
         bgcolor: "#121212",
-        backgroundImage: "url('/mountains.jpg')",
+        backgroundImage: "url('/music.jpg')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         height: "100vh",
@@ -21,8 +21,8 @@ function App() {
     >
       <TerminalBox>
         <TypingText
-          text="Welcome to the Spotify Playlist Manager..."
-          speed={50}
+          text="Welcome to the Spotify Playlist Manager! Here you can create, edit, and organize your playlists with ease. Explore new music, discover trending tracks, and manage your favorite songs all in one place. Enjoy a seamless, interactive experience as your playlists come to life with every keystroke."
+          speed={30}
         />
       </TerminalBox>
     </Box>
