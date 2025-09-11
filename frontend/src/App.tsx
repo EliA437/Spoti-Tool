@@ -1,12 +1,16 @@
 import { Box } from "@mui/material";
 import TerminalBox from "../components/TerminalBox";
-import TypingText from "../components/TypingText";
-import TerminalButton from "../components/TerminalButton";
-import React, { useState } from "react";
+import TopSongs from "../pages/TopSongs";
+import TopArtists from "../pages/TopArtists";
+import CreatePlaylist from "../pages/CreatePlaylist";
+import Home from "../pages/Home";
+import OptionsPage from "../pages/OptionsPage"; // <-- import OptionsPage
+import { useState } from "react";
 
 function App() {
-  // Track which step of the UI we are in
-  const [step, setStep] = useState<"welcome" | "options">("welcome");
+  const [step, setStep] = useState<
+    "welcome" | "options" | "songs" | "artists" | "create"
+  >("welcome");
 
   return (
     <Box
@@ -20,55 +24,32 @@ function App() {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        gap: 2,
         p: 2,
       }}
     >
       <TerminalBox>
-        {step === "welcome" && (
-          <>
-            <TypingText
-              text={`Welcome to the Spotify Playlist Manager!`}
-              speed={15}
-            />
-            <TerminalButton
-              text="Click here to get started"
-              onClick={() => setStep("options")}
-            />
-          </>
+        {/* Home Page */}
+        {step === "welcome" && <Home onStart={() => setStep("options")} />}
+
+        {/* Options Page */}
+        {step === "options" && (
+          <OptionsPage
+            onSelectSongs={() => setStep("songs")}
+            onSelectArtists={() => setStep("artists")}
+            onCreatePlaylist={() => setStep("create")}
+            onBack={() => setStep("welcome")}
+          />
         )}
 
-        {step === "options" && (
-          <>
-            <TypingText text={`What would you like to do?`} speed={15} />
-            <Box
-              sx={{
-                display: "flex",
-                gap: 2,
-                mt: 2,
-                justifyContent: "center", // centers the buttons horizontally
-                alignItems: "center", // centers them vertically (optional)
-                flexWrap: "wrap", // wraps buttons on smaller screens
-              }}
-            >
-              <TerminalButton
-                text="Create Playlist"
-                onClick={() => console.log("Create Playlist clicked")}
-              />
-              <TerminalButton
-                text="Edit Playlist"
-                onClick={() => console.log("Edit Playlist clicked")}
-              />
-              <TerminalButton
-                text="View Playlist"
-                onClick={() => console.log("View Playlist clicked")}
-              />
-            </Box>
-          </>
-        )}
+        {/* Other Pages */}
+        {step === "songs" && <TopSongs onBack={() => setStep("options")} />}
+        {step === "artists" && <TopArtists onBack={() => setStep("options")} />}
+        {step === "create" && <CreatePlaylist onBack={() => setStep("options")} />}
       </TerminalBox>
     </Box>
   );
 }
 
 export default App;
+
+

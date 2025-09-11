@@ -24,10 +24,9 @@ const TerminalBox: React.FC<TerminalBoxProps> = ({
         p: 3,
         display: "flex",
         flexDirection: "column",
-        alignItems: "flex-start",
-        gap: 2,
         width,
         height,
+        gap: 2,
       }}
     >
       {children}
@@ -36,3 +35,5 @@ const TerminalBox: React.FC<TerminalBoxProps> = ({
 };
 
 export default TerminalBox;
+
+
