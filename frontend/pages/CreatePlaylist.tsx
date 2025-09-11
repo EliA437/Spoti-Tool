@@ -21,8 +21,14 @@ const CreatePlaylist: React.FC<CreatePlaylistProps> = ({ onBack }) => {
         <TypingText text={`Let's create a new playlist!`} speed={15} />
       </Box>
 
-      {/* Go Back button anchored bottom-right */}
-      <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+      {/* Go Back button anchored bottom-right (same as TopArtists) */}
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "flex-end",
+          p: 2, // same padding as TopArtists
+        }}
+      >
         <TerminalButton text="Go Back" onClick={onBack} />
       </Box>
     </Box>
@@ -30,4 +36,5 @@ const CreatePlaylist: React.FC<CreatePlaylistProps> = ({ onBack }) => {
 };
 
 export default CreatePlaylist;
+
 

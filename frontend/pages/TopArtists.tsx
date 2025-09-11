@@ -22,7 +22,13 @@ const TopArtists: React.FC<TopArtistsProps> = ({ onBack }) => {
       </Box>
 
       {/* Go Back button bottom-right */}
-      <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "flex-end",
+          p: 2, // same padding as in OptionsPage
+        }}
+      >
         <TerminalButton text="Go Back" onClick={onBack} />
       </Box>
     </Box>
@@ -30,4 +36,5 @@ const TopArtists: React.FC<TopArtistsProps> = ({ onBack }) => {
 };
 
 export default TopArtists;
+
 

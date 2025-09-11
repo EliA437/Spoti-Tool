@@ -13,12 +13,12 @@ const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
       sx={{
         display: "flex",
         flexDirection: "column",
-        height: "100%",
+        height: "90%",
         px: 2,
       }}
     >
       {/* Text at the top */}
-      <Box sx={{ flexGrow: 0, mt: 2 }}>
+      <Box sx={{ height: "0%", mt: 2 }}>
         <TypingText text={`Welcome to the Spotify Playlist Manager!`} speed={15} />
       </Box>
 

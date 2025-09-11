@@ -26,7 +26,7 @@ const TopSongs: React.FC<TopSongsProps> = ({ onBack }) => {
         sx={{
           display: "flex",
           justifyContent: "flex-end",
-          width: "100%",       // full row
+          p: 2, // added same padding as TopArtists
         }}
       >
         <TerminalButton text="Go Back" onClick={onBack} />
@@ -36,3 +36,4 @@ const TopSongs: React.FC<TopSongsProps> = ({ onBack }) => {
 };
 
 export default TopSongs;
+

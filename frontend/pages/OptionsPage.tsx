@@ -21,28 +21,33 @@ const OptionsPage: React.FC<OptionsPageProps> = ({
       sx={{
         display: "flex",
         flexDirection: "column",
-        height: "100%",
-        justifyContent: "flex-start", // keep content at the top
-        alignItems: "center",
-        pt: 2, // some padding from the top
+        height: "100%", 
       }}
     >
-      {/* Text at the top */}
-      <TypingText text={`What would you like to do?`} speed={15} />
+      {/* Content area exactly like TopArtists */}
+      <Box sx={{ flexGrow: 1 }}>
+        {/* TypingText in the same position */}
+        <TypingText text={`What would you like to do?`} speed={15} />
 
-      {/* Buttons vertically below the text */}
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: 2,
-          mt: 4, // space between text and buttons
-        }}
-      >
-        <TerminalButton text="Get Top Songs" onClick={onSelectSongs} />
-        <TerminalButton text="Get Top Artists" onClick={onSelectArtists} />
-        <TerminalButton text="Create Playlist" onClick={onCreatePlaylist} />
+        {/* Buttons below typing text */}
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: 2,
+            mt: 4,
+            marginTop: 12,
+          }}
+        >
+          <TerminalButton text="Get Top Songs" onClick={onSelectSongs} />
+          <TerminalButton text="Get Top Artists" onClick={onSelectArtists} />
+          <TerminalButton text="Create Playlist" onClick={onCreatePlaylist} />
+        </Box>
+      </Box>
+
+      {/* Go Back button bottom-right exactly like TopArtists */}
+      <Box sx={{ display: "flex", justifyContent: "flex-end", p: 2 }}>
         <TerminalButton text="Go Back" onClick={onBack} />
       </Box>
     </Box>
@@ -50,4 +55,7 @@ const OptionsPage: React.FC<OptionsPageProps> = ({
 };
 
 export default OptionsPage;
+
+
+
 
