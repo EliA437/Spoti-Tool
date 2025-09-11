@@ -1,7 +1,6 @@
-import requests, os
-from fastapi import FastAPI, Request
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.staticfiles import StaticFiles
+from routes import spotify_routes 
 
 app = FastAPI()
 
@@ -12,3 +11,4 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.include_router(spotify_routes.router, prefix="/spotify")
