@@ -17,12 +17,10 @@ const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
         px: 2,
       }}
     >
-      {/* Text at the top */}
       <Box sx={{ height: "0%", mt: 2 }}>
         <TypingText text={`Welcome to the Spotify Playlist Manager!`} speed={15} />
       </Box>
 
-      {/* Spacer to push the button to the middle */}
       <Box sx={{ flexGrow: 1, display: "flex", justifyContent: "center", alignItems: "center" }}>
         <TerminalButton text="Click here to get started" onClick={onStart} />
       </Box>

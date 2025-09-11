@@ -36,9 +36,9 @@ const TypingText: React.FC<TypingTextProps> = ({
         color,
         fontFamily: "monospace",
         fontWeight: 500,
-        whiteSpace: "pre-wrap", // allows wrapping
-        wordBreak: "break-word", // break long words if needed
-        fontSize: "1.5rem", // default
+        whiteSpace: "pre-wrap", 
+        wordBreak: "break-word", 
+        fontSize: "1.5rem", 
         width: "100%",
         transition: "font-size 0.2s ease",
         "@media (max-width:1200px)": {

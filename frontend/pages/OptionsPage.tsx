@@ -24,12 +24,9 @@ const OptionsPage: React.FC<OptionsPageProps> = ({
         height: "100%", 
       }}
     >
-      {/* Content area exactly like TopArtists */}
       <Box sx={{ flexGrow: 1 }}>
-        {/* TypingText in the same position */}
         <TypingText text={`What would you like to do?`} speed={15} />
 
-        {/* Buttons below typing text */}
         <Box
           sx={{
             display: "flex",
@@ -46,7 +43,6 @@ const OptionsPage: React.FC<OptionsPageProps> = ({
         </Box>
       </Box>
 
-      {/* Go Back button bottom-right exactly like TopArtists */}
       <Box sx={{ display: "flex", justifyContent: "flex-end", p: 2 }}>
         <TerminalButton text="Go Back" onClick={onBack} />
       </Box>

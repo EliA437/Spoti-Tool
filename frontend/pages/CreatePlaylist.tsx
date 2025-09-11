@@ -13,20 +13,18 @@ const CreatePlaylist: React.FC<CreatePlaylistProps> = ({ onBack }) => {
       sx={{
         display: "flex",
         flexDirection: "column",
-        height: "100%", // takes full height of parent
+        height: "100%", 
       }}
     >
-      {/* Main content at the top */}
       <Box sx={{ flexGrow: 1 }}>
         <TypingText text={`Let's create a new playlist!`} speed={15} />
       </Box>
 
-      {/* Go Back button anchored bottom-right (same as TopArtists) */}
       <Box
         sx={{
           display: "flex",
           justifyContent: "flex-end",
-          p: 2, // same padding as TopArtists
+          p: 2, 
         }}
       >
         <TerminalButton text="Go Back" onClick={onBack} />

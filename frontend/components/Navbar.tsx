@@ -29,7 +29,7 @@ const Navbar: React.FC<NavbarBoxProps> = ({ glowColor, children }) => {
           height: "150%",
           borderRadius: "50%",
           background: `radial-gradient(circle, ${glowColor} 0%, transparent 80%)`,
-          filter: "blur(15px)", // softens the glow
+          filter: "blur(15px)", 
           animation: "pulseGlow 6s ease-in-out infinite",
           zIndex: 0,
         },

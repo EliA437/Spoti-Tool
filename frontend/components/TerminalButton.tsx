@@ -17,10 +17,10 @@ const TerminalButton: React.FC<TerminalButtonProps> = ({ text, onClick }) => {
         textTransform: "none",
         backgroundColor: "transparent",
         borderRadius: 2,
-        padding: "6px 14px", // slightly smaller padding
+        padding: "6px 14px", 
         cursor: "pointer",
         transition: "font-size 0.2s ease",
-        fontSize: "1.25rem", // smaller font than TypingText
+        fontSize: "1.25rem", 
         "@media (max-width:1200px)": {
           fontSize: "1rem",
         },
@@ -30,7 +30,7 @@ const TerminalButton: React.FC<TerminalButtonProps> = ({ text, onClick }) => {
         "&:hover": {
           backgroundColor: "rgba(199, 199, 199, 0.1)",
         },
-        mt: 3, // adds margin-top for space above the button
+        mt: 3, 
       }}
     >
       {text}

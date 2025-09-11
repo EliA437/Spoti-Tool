@@ -13,20 +13,18 @@ const TopSongs: React.FC<TopSongsProps> = ({ onBack }) => {
       sx={{
         display: "flex",
         flexDirection: "column",
-        height: "100%", // fill available height
+        height: "100%", 
       }}
     >
-      {/* Content */}
       <Box sx={{ flexGrow: 1 }}>
         <TypingText text={`Here are your top songs!`} speed={15} />
       </Box>
 
-      {/* Go Back button bottom-right */}
       <Box
         sx={{
           display: "flex",
           justifyContent: "flex-end",
-          p: 2, // added same padding as TopArtists
+          p: 2, 
         }}
       >
         <TerminalButton text="Go Back" onClick={onBack} />

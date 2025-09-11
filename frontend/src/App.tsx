@@ -4,7 +4,7 @@ import TopSongs from "../pages/TopSongs";
 import TopArtists from "../pages/TopArtists";
 import CreatePlaylist from "../pages/CreatePlaylist";
 import Home from "../pages/Home";
-import OptionsPage from "../pages/OptionsPage"; // <-- import OptionsPage
+import OptionsPage from "../pages/OptionsPage";
 import { useState } from "react";
 
 function App() {
