@@ -1,17 +1,24 @@
 import os
 from .client import sp
 
-def get_users_top_tracks(folder='User Data', filename='TopTracks.txt'):
+from .client import sp
+
+def get_users_top_tracks(limit: int = 50):
+    """
+    Fetch the current user's top tracks and return a list of nicely formatted strings.
+    """
     print("Fetching your top tracks...")
-    top_tracks_data = sp.current_user_top_tracks(limit=50)
-    top_tracks = [(track['name'], track['popularity']) for track in top_tracks_data.get('items', [])]
 
-    os.makedirs(folder, exist_ok=True)
-    file_path = os.path.join(folder, filename)
+    top_tracks_data = sp.current_user_top_tracks(limit=limit)
+    top_tracks = [
+        (track['name'], track['popularity'])
+        for track in top_tracks_data.get('items', [])
+    ]
 
-    with open(file_path, "w", encoding="utf-8") as file:
-        for i, (track_name, track_popularity) in enumerate(top_tracks, start=1):
-            file.write(f"{i}: {track_name} - Popularity: {track_popularity}\n")
-            print(f"{i}: {track_name} - Popularity: {track_popularity}")
+    formatted_tracks = []
+    for i, (name, popularity) in enumerate(top_tracks, start=1):
+        line = f"{i}: {name} - Popularity: {popularity}"
+        formatted_tracks.append(line)
 
-    print(f"\nTop tracks have been saved to {filename}\n")
+    return formatted_tracks
+

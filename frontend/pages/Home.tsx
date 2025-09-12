@@ -13,7 +13,7 @@ const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
       sx={{
         display: "flex",
         flexDirection: "column",
-        height: "90%",
+        height: "85%",
         px: 2,
       }}
     >
