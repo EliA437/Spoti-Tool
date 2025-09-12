@@ -1,4 +1,3 @@
-import os
 from .client import sp
 
 from .client import sp

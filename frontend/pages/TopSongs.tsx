@@ -38,7 +38,7 @@ const TopSongs: React.FC<TopSongsProps> = ({ onBack }) => {
     >
       <Box sx={{ flexGrow: 0 }}>
         <TypingText
-          key={loading ? "loading" : "loaded"} // <--- change key based on loading state
+          key={loading ? "loading" : "loaded"}
           text={loading ? "Fetching top tracks..." : "Here are your top songs!"}
           speed={15}
         />

@@ -12,7 +12,6 @@ const WhiteScrollList: React.FC<WhiteScrollListProps> = ({ items }) => {
         flexGrow: 1,
         overflowY: "auto",
         px: 2,
-        // Custom white scrollbar
         "&::-webkit-scrollbar": {
           width: "8px",
         },

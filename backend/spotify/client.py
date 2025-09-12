@@ -4,7 +4,6 @@ import os
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 
-# Path to the .env file one level up
 env_path = Path(__file__).resolve().parent.parent / ".env"
 load_dotenv(dotenv_path=env_path)
 
