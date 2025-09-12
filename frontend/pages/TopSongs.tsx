@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Box, Button, List, ListItem, ListItemText } from "@mui/material";
+import { Box, CircularProgress } from "@mui/material";
 import TypingText from "../components/TypingText";
 import TerminalButton from "../components/TerminalButton";
-import TopSongsBox from "../components/TopSongsBox";
+import WhiteScrollList from "../components/WhiteScrollList";
 
 interface TopSongsProps {
   onBack: () => void;
@@ -10,6 +10,7 @@ interface TopSongsProps {
 
 const TopSongs: React.FC<TopSongsProps> = ({ onBack }) => {
   const [tracks, setTracks] = useState<string[]>([]);
+  const [loading, setLoading] = useState(true);
 
   const fetchTopTracks = async () => {
     try {
@@ -18,6 +19,8 @@ const TopSongs: React.FC<TopSongsProps> = ({ onBack }) => {
       setTracks(data.tracks || data || []);
     } catch (err) {
       console.error("Failed to fetch top tracks:", err);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -34,10 +37,14 @@ const TopSongs: React.FC<TopSongsProps> = ({ onBack }) => {
       }}
     >
       <Box sx={{ flexGrow: 0 }}>
-        <TypingText text={`Here are your top songs!`} speed={15} />
+        <TypingText
+          key={loading ? "loading" : "loaded"} // <--- change key based on loading state
+          text={loading ? "Fetching top tracks..." : "Here are your top songs!"}
+          speed={15}
+        />
       </Box>
 
-      <TopSongsBox items={tracks}/>
+      <WhiteScrollList items={tracks} />
 
       <Box sx={{ display: "flex", justifyContent: "flex-end", p: 2 }}>
         <TerminalButton text="Go Back" onClick={onBack} />

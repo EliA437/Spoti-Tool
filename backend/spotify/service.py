@@ -22,3 +22,23 @@ def get_users_top_tracks(limit: int = 50):
 
     return formatted_tracks
 
+def get_users_top_artists(limit: int = 50):
+    """
+    Fetch the current user's top artists and return a list of nicely formatted strings.
+    """
+    print("Fetching your top artists...")
+
+    top_artists_data = sp.current_user_top_artists(limit=limit)
+    top_artists = [
+        artist['name'] 
+        for artist in top_artists_data.get('items', [])
+    ]
+
+    formatted_artists = []
+    for i, name in enumerate(top_artists, start=1):
+        line = f"{i}: {name}"
+        formatted_artists.append(line)
+
+    return formatted_artists
+
+
