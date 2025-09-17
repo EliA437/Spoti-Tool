@@ -1,6 +1,7 @@
 from dotenv import load_dotenv
 from pathlib import Path
 import os
+import openai
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 
@@ -26,4 +27,6 @@ sp_oauth = SpotifyOAuth(
 
 # Spotify client
 sp = spotipy.Spotify(auth_manager=sp_oauth)
+
+
 

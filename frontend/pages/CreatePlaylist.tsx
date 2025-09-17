@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, TextField, Button } from "@mui/material";
+import { Box, TextField } from "@mui/material";
 import TypingText from "../components/TypingText";
 import TerminalButton from "../components/TerminalButton";
 
@@ -9,19 +9,28 @@ interface CreatePlaylistProps {
 
 const CreatePlaylist: React.FC<CreatePlaylistProps> = ({ onBack }) => {
   const [prompt, setPrompt] = useState("");
-  const [numSongs, setNumSongs] = useState(10);
+  const [numSongs, setNumSongs] = useState("");
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<string | null>(null);
 
-  const handleCreatePlaylist = async () => {
+  const handleCreatePlaylist = async (
+    overridePrompt?: string,
+    overrideNumSongs?: number
+  ) => {
     setLoading(true);
     setResult(null);
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/playlist-generator?prompt=${encodeURIComponent(
-          prompt
-        )}&num_songs=${numSongs}`
+        `http://localhost:8000/api/playlist-generator`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            prompt: overridePrompt ?? prompt,
+            num_songs: overrideNumSongs ?? numSongs,
+          }),
+        }
       );
       const data = await response.json();
       setResult(data.message);
@@ -68,9 +77,9 @@ const CreatePlaylist: React.FC<CreatePlaylistProps> = ({ onBack }) => {
           />
           <TextField
             label="Number of songs"
-            type="number"
+            placeholder="Enter a number less than 50"
             value={numSongs}
-            onChange={(e) => setNumSongs(Number(e.target.value))}
+            onChange={(e) => setNumSongs(e.target.value)}
             fullWidth
             InputLabelProps={{
               style: { color: "white" },
@@ -84,9 +93,25 @@ const CreatePlaylist: React.FC<CreatePlaylistProps> = ({ onBack }) => {
                 "&:hover fieldset": { borderColor: "lightgray" },
                 "&.Mui-focused fieldset": { borderColor: "white" },
               },
+              input: { color: "white" },
+              "& .MuiInputBase-input::placeholder": {
+                color: "white",
+                opacity: 0.6,
+              },
             }}
           />
-          <TerminalButton text="Create Playlist" onClick={handleCreatePlaylist} />
+
+          {/* Normal create */}
+          <TerminalButton
+            text={loading ? "Creating..." : "Create Playlist"}
+            onClick={() => handleCreatePlaylist()}
+            isDisabled={
+              prompt.trim() === "" || 
+              numSongs.trim() === "" || 
+              isNaN(Number(numSongs)) || 
+              Number(numSongs) <= 0 
+            }
+          />
         </Box>
 
         {/* Result display */}
@@ -101,4 +126,3 @@ const CreatePlaylist: React.FC<CreatePlaylistProps> = ({ onBack }) => {
 };
 
 export default CreatePlaylist;
-

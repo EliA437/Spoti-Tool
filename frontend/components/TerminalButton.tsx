@@ -4,13 +4,15 @@ import { Button } from "@mui/material";
 interface TerminalButtonProps {
   text: string;
   onClick?: () => void;
+  isDisabled?: boolean;
 }
 
-const TerminalButton: React.FC<TerminalButtonProps> = ({ text, onClick }) => {
+const TerminalButton: React.FC<TerminalButtonProps> = ({ text, onClick, isDisabled }) => {
   return (
     <Button
       onClick={onClick}
       variant="text"
+      disabled={isDisabled}
       sx={{
         fontFamily: "'JetBrains Mono', monospace",
         color: "#ffffffff",

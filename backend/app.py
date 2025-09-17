@@ -30,6 +30,7 @@ def api_top_artists():
 # POST endpoint for creating playlist
 @app.post("/api/playlist-generator")
 def api_playlist_generator(req: PlaylistRequest):
+    print("Attempting to create playlist")
     try:
         start_playlist_generator(req.prompt, req.num_songs)
         return {"message": "Playlist created successfully!"}
