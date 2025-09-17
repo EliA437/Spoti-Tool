@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routes import spotify_routes 
-from spotify.service import get_users_top_tracks
-from spotify.service import get_users_top_artists
+from pydantic import BaseModel
+from spotify.service import get_users_top_tracks, get_users_top_artists, start_playlist_generator
+
 app = FastAPI()
 
 app.add_middleware(
@@ -12,7 +12,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(spotify_routes.router, prefix="/spotify")
+# Request body schema for playlist creation
+class PlaylistRequest(BaseModel):
+    prompt: str
+    num_songs: int
 
 @app.get("/api/top-tracks")
 def api_top_tracks():
@@ -23,3 +26,12 @@ def api_top_tracks():
 def api_top_artists():
     tracks = get_users_top_artists()
     return tracks
+
+# POST endpoint for creating playlist
+@app.post("/api/playlist-generator")
+def api_playlist_generator(req: PlaylistRequest):
+    try:
+        start_playlist_generator(req.prompt, req.num_songs)
+        return {"message": "Playlist created successfully!"}
+    except Exception as e:
+        return {"message": f"Error creating playlist: {str(e)}"}
