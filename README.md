@@ -1,63 +1,103 @@
-# Spotify-WebApp
+# AI Spotify Playlist Generator
+> *Create personalized Spotify playlists using AI*
 
-# Spotify WebApp
+A full-stack application that generates custom Spotify playlists based on your prompts using OpenAI's GPT and DALL-E. Users log in with their own Spotify accounts, describe the vibe they want, and the AI creates both the playlist and a custom cover image. Built with React (frontend) and FastAPI (backend).
 
-A simple full-stack web application that connects to the Spotify API to display a user’s top tracks.
+## Features
 
-## 📂 Project Structure
+- **Spotify OAuth Integration** - Users log in with their own Spotify accounts
+- **AI-Powered Playlist Generation** - Describe any mood, genre, or theme and get a curated playlist
+- **Custom AI-Generated Cover Art** - Each playlist gets a unique cover image created by DALL-E
+- **Real-Time Status Updates** - Watch your playlist being created with live progress updates
+- **Smart Track Matching** - AI suggestions are matched with actual Spotify tracks
+- **View top tracks and artists** from your Spotify account
+- **Terminal-style UI** with typing animations
 
-Spotify-WebApp/
-├── backend/
-│ ├── app.py # FastAPI backend entry point
-│ ├── spotify/ # Spotify API client logic
-│ ├── venv/ # Python virtual environment (not committed)
-│ └── .env # Environment variables
-└── frontend/ # React/Vite frontend
+![Description of Image](frontend/public/readme_img_1.png)
+![Description of Image](frontend/public/readme_img_2.png)
+![Description of Image](frontend/public/readme_img_3.png)
 
-bash
-Copy code
+## Project Structure
 
-## ⚙️ Setup Instructions
+```
+AI-Playlist-Generator/
+├── frontend/                 # React frontend
+│   ├── public/              # Public assets
+│   └── src/                 # Components and main App.tsx
+├── backend/                 # FastAPI backend
+│   ├── spotify/             # Spotify integration modules
+│   ├── playlist_images/     # Generated cover art storage
+│   ├── app.py              # API endpoints
+│   └── requirements.txt    # Python dependencies
+└── README.md
+```
 
-### 1. Clone the Repository
-```bash
-git clone https://github.com/EliA437/Spotify-WebApp
-cd Spotify-WebApp
-2. Backend Setup
-Go into the backend folder and create/activate a virtual environment:
+## Setup
 
-bash
-Copy code
-cd backend
-python -m venv venv
-# Windows PowerShell
-venv\Scripts\activate
-# macOS/Linux
-source venv/bin/activate
-Install dependencies:
+### Frontend
 
-bash
-Copy code
-pip install -r requirements.txt
-Create a .env file in backend with your Spotify credentials:
+1. Navigate to the frontend folder:
+   ```bash
+   cd frontend
+   ```
 
-ini
-Copy code
-SPOTIFY_CLIENT_ID=your_client_id
-SPOTIFY_CLIENT_SECRET=your_client_secret
-SPOTIFY_REDIRECT_URI=http://localhost:8888/callback
-Run the FastAPI server:
+2. Install dependencies (if not done yet):
+   ```bash
+   npm install
+   ```
 
-bash
-Copy code
-python app.py  # or: uvicorn app:app --reload
-The backend runs at http://127.0.0.1:8000.
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
 
-3. Frontend Setup
-Open a new terminal:
+4. Open your browser at **http://localhost:5173**
 
-bash
-Copy code
-cd frontend
-npm install
-npm run dev
+### Backend
+
+1. Navigate to the backend folder:
+   ```bash
+   cd backend
+   ```
+
+2. Create and activate a virtual environment:
+   
+   **Windows:**
+   ```bash
+   python -m venv venv
+   .\venv\Scripts\activate
+   ```
+   
+   **macOS/Linux:**
+   ```bash
+   python3 -m venv venv
+   source venv/bin/activate
+   ```
+
+3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. Set up environment variables:
+   Create a `.env` file in the backend directory:
+   ```env
+   SPOTIPY_CLIENT_ID=your_spotify_client_id
+   SPOTIPY_CLIENT_SECRET=your_spotify_client_secret
+   SPOTIPY_REDIRECT_URI=http://localhost:8000/api/auth/callback
+   OPEN_AI_KEY=your_openai_api_key
+   ```
+
+5. Start the FastAPI server:
+   ```bash
+   uvicorn app:app --reload --port 8000
+   ```
+
+The backend API will be available at **http://localhost:8000**
+
+## Notes
+
+- You need a Spotify Developer Account and OpenAI API key
+- Set up your Spotify app with redirect URI: `http://localhost:8000/api/auth/callback`
+- Generated playlist images are stored in `backend/playlist_images/`
+- Users must log in with their own Spotify account to create playlists
