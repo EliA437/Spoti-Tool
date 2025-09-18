@@ -70,7 +70,8 @@ const CreatePlaylist: React.FC<CreatePlaylistProps> = ({ onBack }) => {
             }
           );
 
-          if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+          if (!response.ok)
+            throw new Error(`HTTP error! status: ${response.status}`);
 
           const data = await response.json();
           console.log("Playlist generation started:", data);
@@ -120,7 +121,15 @@ const CreatePlaylist: React.FC<CreatePlaylistProps> = ({ onBack }) => {
     Number(numSongs) > 50;
 
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", height: "100%", p: 2 }}>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        height: "100%",
+        p: 2,
+        position: "relative",
+      }}
+    >
       <Box sx={{ flexGrow: 1 }}>
         <TypingText text={statusText} speed={15} />
 
@@ -159,7 +168,8 @@ const CreatePlaylist: React.FC<CreatePlaylistProps> = ({ onBack }) => {
         </Box>
       )}
 
-      <Box sx={{ display: "flex", justifyContent: "flex-end", p: 2 }}>
+      {/* Go Back button */}
+      <Box sx={{ position: "absolute", bottom: 16, right: 16 }}>
         <TerminalButton text="Go Back" onClick={onBack} isDisabled={loading} />
       </Box>
     </Box>

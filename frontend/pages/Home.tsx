@@ -18,7 +18,7 @@ const HomePage: React.FC<HomePageProps> = ({ onStart }) => {
       }}
     >
       <Box sx={{ height: "0%", mt: 2 }}>
-        <TypingText text={`Welcome to the Spotify Playlist Manager!`} speed={15} />
+        <TypingText text={`Welcome to the Spoti-Tool!`} speed={15} />
       </Box>
 
       <Box sx={{ flexGrow: 1, display: "flex", justifyContent: "center", alignItems: "center" }}>

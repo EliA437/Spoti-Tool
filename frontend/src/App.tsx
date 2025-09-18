@@ -39,7 +39,7 @@ function App() {
         justifyContent: "center",
         alignItems: "center",
         p: 2,
-        position: "relative", // needed for the icon button positioning
+        position: "relative",
       }}
     >
       <TerminalBox>
@@ -57,13 +57,12 @@ function App() {
         {step === "create" && <CreatePlaylist onBack={() => setStep("options")} />}
       </TerminalBox>
 
-      {/* Bottom-right icon button to change background, only on Home */}
       {step === "welcome" && (
         <Box
           sx={{
             position: "absolute",
-            bottom: 24, // space from bottom
-            right: 24,  // space from right
+            bottom: 24, 
+            right: 24,  
           }}
         >
           <input
