@@ -32,41 +32,45 @@ const CreatePlaylist: React.FC<CreatePlaylistProps> = ({ onBack }) => {
           }),
         }
       );
+
+      if (!response.ok) throw new Error("Failed"); // Treat any non-2xx as failure
+
       const data = await response.json();
-      setResult(data.message);
-    } catch (err) {
-      console.error(err);
-      setResult("Error creating playlist");
+      setResult(
+        data.message
+          ? "Playlist created successfully!"
+          : "Failed to create playlist"
+      );
+    } catch {
+      setResult("Failed to create playlist");
     } finally {
       setLoading(false);
     }
   };
 
+  const statusText = loading
+    ? "Creating playlist..."
+    : result
+    ? result
+    : "Let's create a new playlist!";
+
   return (
     <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        height: "100%",
-        p: 2,
-      }}
+      sx={{ display: "flex", flexDirection: "column", height: "100%", p: 2 }}
     >
       <Box sx={{ flexGrow: 1 }}>
-        <TypingText text={`Let's create a new playlist!`} speed={15} />
+        {/* Status TypingText */}
+        <TypingText text={statusText} speed={15} />
 
-        {/* Simple form */}
+        {/* Form */}
         <Box sx={{ mt: 3, display: "flex", flexDirection: "column", gap: 2 }}>
           <TextField
             label="Playlist prompt"
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
             fullWidth
-            InputLabelProps={{
-              style: { color: "white" },
-            }}
-            InputProps={{
-              style: { color: "white" },
-            }}
+            InputLabelProps={{ style: { color: "white" } }}
+            InputProps={{ style: { color: "white" } }}
             sx={{
               "& .MuiOutlinedInput-root": {
                 "& fieldset": { borderColor: "white" },
@@ -81,12 +85,8 @@ const CreatePlaylist: React.FC<CreatePlaylistProps> = ({ onBack }) => {
             value={numSongs}
             onChange={(e) => setNumSongs(e.target.value)}
             fullWidth
-            InputLabelProps={{
-              style: { color: "white" },
-            }}
-            InputProps={{
-              style: { color: "white" },
-            }}
+            InputLabelProps={{ style: { color: "white" } }}
+            InputProps={{ style: { color: "white" } }}
             sx={{
               "& .MuiOutlinedInput-root": {
                 "& fieldset": { borderColor: "white" },
@@ -101,23 +101,21 @@ const CreatePlaylist: React.FC<CreatePlaylistProps> = ({ onBack }) => {
             }}
           />
 
-          {/* Normal create */}
           <TerminalButton
             text={loading ? "Creating..." : "Create Playlist"}
             onClick={() => handleCreatePlaylist()}
             isDisabled={
-              prompt.trim() === "" || 
-              numSongs.trim() === "" || 
-              isNaN(Number(numSongs)) || 
-              Number(numSongs) <= 0 
+              loading || 
+              prompt.trim() === "" ||
+              numSongs.trim() === "" ||
+              isNaN(Number(numSongs)) ||
+              Number(numSongs) <= 0
             }
           />
         </Box>
-
-        {/* Result display */}
-        {result && <Box sx={{ mt: 2 }}>{result}</Box>}
       </Box>
 
+      {/* Go Back Button */}
       <Box sx={{ display: "flex", justifyContent: "flex-end", p: 2 }}>
         <TerminalButton text="Go Back" onClick={onBack} />
       </Box>
