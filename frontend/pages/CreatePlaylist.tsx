@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Box, TextField } from "@mui/material";
 import TypingText from "../components/TypingText";
 import TerminalButton from "../components/TerminalButton";
@@ -48,6 +48,17 @@ const CreatePlaylist: React.FC<CreatePlaylistProps> = ({ onBack }) => {
     }
   };
 
+  useEffect(() => {
+    if (result === "Playlist created successfully!") {
+      const timer = setTimeout(() => {
+        setResult(null);
+        setPrompt("");
+        setNumSongs("");
+      }, 10000);
+      return () => clearTimeout(timer);
+    }
+  }, [result]);
+
   const statusText = loading
     ? "Creating playlist..."
     : result
@@ -55,9 +66,7 @@ const CreatePlaylist: React.FC<CreatePlaylistProps> = ({ onBack }) => {
     : "Let's create a new playlist!";
 
   return (
-    <Box
-      sx={{ display: "flex", flexDirection: "column", height: "100%", p: 2 }}
-    >
+    <Box sx={{ display: "flex", flexDirection: "column", height: "100%", p: 2 }}>
       <Box sx={{ flexGrow: 1 }}>
         {/* Status TypingText */}
         <TypingText text={statusText} speed={15} />
@@ -94,15 +103,12 @@ const CreatePlaylist: React.FC<CreatePlaylistProps> = ({ onBack }) => {
                 "&.Mui-focused fieldset": { borderColor: "white" },
               },
               input: { color: "white" },
-              "& .MuiInputBase-input::placeholder": {
-                color: "white",
-                opacity: 0.6,
-              },
+              "& .MuiInputBase-input::placeholder": { color: "white", opacity: 0.6 },
             }}
           />
 
           <TerminalButton
-            text={loading ? "Creating..." : "Create Playlist"}
+            text={loading ? "..." : "Create Playlist"}
             onClick={() => handleCreatePlaylist()}
             isDisabled={
               loading || 
@@ -124,3 +130,4 @@ const CreatePlaylist: React.FC<CreatePlaylistProps> = ({ onBack }) => {
 };
 
 export default CreatePlaylist;
+
