@@ -16,21 +16,7 @@ A full-stack application that generates custom Spotify playlists based on your p
 ![Description of Image](frontend/public/readme_img_1.png)
 ![Description of Image](frontend/public/readme_img_2.png)
 ![Description of Image](frontend/public/readme_img_3.png)
-
-## Project Structure
-
-```
-AI-Playlist-Generator/
-├── frontend/                 # React frontend
-│   ├── public/              # Public assets
-│   └── src/                 # Components and main App.tsx
-├── backend/                 # FastAPI backend
-│   ├── spotify/             # Spotify integration modules
-│   ├── playlist_images/     # Generated cover art storage
-│   ├── app.py              # API endpoints
-│   └── requirements.txt    # Python dependencies
-└── README.md
-```
+![Description of Image](frontend/public/readme_img_4.png)
 
 ## Setup
 
@@ -41,21 +27,16 @@ AI-Playlist-Generator/
    cd frontend
    ```
 
-2. Install dependencies (if not done yet):
-   ```bash
-   npm install
-   ```
-
-3. Start the development server:
+2. Start the development server:
    ```bash
    npm run dev
    ```
 
-4. Open your browser at **http://localhost:5173**
+3. Open your browser at **http://localhost:5173**
 
 ### Backend
 
-1. Navigate to the backend folder:
+1. Open a new terminal and navigate to the backend folder:
    ```bash
    cd backend
    ```
@@ -101,3 +82,9 @@ The backend API will be available at **http://localhost:8000**
 - Set up your Spotify app with redirect URI: `http://localhost:8000/api/auth/callback`
 - Generated playlist images are stored in `backend/playlist_images/`
 - Users must log in with their own Spotify account to create playlists
+
+## Disclaimers
+
+- **Playlist Image Generation** - Cover art creation sometimes encounters issues due to OpenAI's content restrictions. If image generation fails, the playlist will still be created without a custom cover.
+- **Song Count** - The number of songs you enter is treated as a maximum. The app may not always find the exact number of tracks you requested, especially for very specific or niche prompts.
+- **Early Development** - This is an early version of the application and is still under active development. Some features may not work perfectly or may change in future updates.
