@@ -12,6 +12,7 @@ A full-stack application that generates custom Spotify playlists based on your p
 - **Smart Track Matching** - AI suggestions are matched with actual Spotify tracks
 - **View top tracks and artists** from your Spotify account
 - **Terminal-style UI** with typing animations
+- **Liquid glass style UI** with updateable background
 
 ![Description of Image](frontend/public/readme_img_1.png)
 ![Description of Image](frontend/public/readme_img_2.png)
