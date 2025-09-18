@@ -37,8 +37,8 @@ const OptionsPage: React.FC<OptionsPageProps> = ({
             marginTop: 12,
           }}
         >
-          <TerminalButton text="Get Top Songs" onClick={onSelectSongs} />
-          <TerminalButton text="Get Top Artists" onClick={onSelectArtists} />
+          <TerminalButton text="Get Your Top Songs" onClick={onSelectSongs} />
+          <TerminalButton text="Get Your Top Artists" onClick={onSelectArtists} />
           <TerminalButton text="Create Playlist" onClick={onCreatePlaylist} />
         </Box>
       </Box>
