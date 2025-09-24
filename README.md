@@ -1,5 +1,3 @@
-[![Watch the Demo Video](frontend/public/readme_img_1.png)](https://github.com/EliA437/Spoti-Tool/blob/main/frontend/public/markdown.mp4?raw=true)
-
 # Spoti-Tool
 > *Create personalized Spotify playlists using AI*
 > 
