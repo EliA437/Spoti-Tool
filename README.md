@@ -1,9 +1,10 @@
 <video src="frontend/public/markdown.mp4" width="600" controls></video>
+[![Watch the Demo Video](frontend/public/readme_img_1.png)](https://github.com/EliA437/Spoti-Tool/blob/main/frontend/public/markdown.mp4?raw=true)
 
 # Spoti-Tool
 > *Create personalized Spotify playlists using AI*
 
-⚠️ **Current Version Notice**  
+ **Current Version Notice**  
 In the current version of Spoti-Tool, the Spotify login feature has been disabled.  
 This is because without official approval from Spotify’s Developer team, OAuth access is limited and won’t work for public users.  
 Until the app is accepted for extended quota mode, it runs without login functionality so you can still test other parts of the app.
