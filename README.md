@@ -1,8 +1,7 @@
 # Spoti-Tool
 > *Create personalized Spotify playlists using AI*
 > 
-![Image](https://github.com/user-attachments/assets/b4add730-836e-4e76-9f60-95836f01b00d)
-## [**▶️ Watch Full Video Here**](https://github.com/EliA437/Spoti-Tool/blob/main/frontend/public/markdown.mp4?raw=true)
+## [**▶️ Watch Video Demonstration Here**](https://github.com/EliA437/Spoti-Tool/blob/main/frontend/public/markdown.mp4?raw=true)
 
  **Current Version Notice**  
 In the current version of Spoti-Tool, the Spotify login feature has been disabled.  
